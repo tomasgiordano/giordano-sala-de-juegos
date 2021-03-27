@@ -1,14 +1,14 @@
 <div id="sect1"class="container">
   <div id="contentInput">
-    <h1 style="margin: 10px; margin-top: 30px;">Login</h1>
+    <h1 style="margin: 10px; margin-top: 30px;">Registro</h1>
       <mat-form-field class="inputLogin">
         <mat-label>Correo</mat-label>
-        <input [(ngModel)]="correo" matInput id="correo">
+        <input [(ngModel)]="correo" matInput>
         <mat-error>Falta correo</mat-error>
       </mat-form-field>
       <mat-form-field class="inputLogin">
         <mat-label>Clave</mat-label>
-        <input [(ngModel)]="clave" matInput type="password" id="clave">
+        <input [(ngModel)]="clave" matInput type="password">
         <mat-error>Falta clave</mat-error>
       </mat-form-field>
       <span style="margin-left: 5px;">{{error}}</span>
@@ -16,12 +16,12 @@
       <br>
         <tr>
           <td>
-            <button id='button' mat-raised-button (click)='onSignIn()'>Ingresar</button>
+            <button id='buttonCancelar' mat-raised-button (click)="Cancelar()">Cancelar</button>
           </td>
         </tr>
         <tr>
         <td>
-          <button id='button' mat-raised-button (click)="Registrar()">Registrarme</button>
+          <button id='buttonRegistrar' mat-raised-button (click)="onSignUp()">Registrar</button>
         </td>
       </tr>
   </div>

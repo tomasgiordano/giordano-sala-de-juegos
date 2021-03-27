@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "sala-de-juegos-3450e": {
+      "hosting": {
+        "sala-de-juegos": [
+          "sala-de-juegos-3450e"
+        ]
+      }
+    }
+  }
+}

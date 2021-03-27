@@ -3,46 +3,50 @@ import { DOCUMENT } from '@angular/common';
 import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms'
 import { FirebaseService } from 'src/app/services/firebase.service';
+
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css'],
+  selector: 'app-registro',
+  templateUrl: './registro.component.html',
+  styleUrls: ['./registro.component.css'],
   encapsulation: ViewEncapsulation.None
 })
-export class LoginComponent implements OnInit {
+export class RegistroComponent implements OnInit {
 
-  constructor(@Inject(DOCUMENT) private _document, private route:Router, public firebaseService:FirebaseService) { }
+  constructor(@Inject(DOCUMENT) private _document, private route:Router,public firebaseService:FirebaseService) { }
   error:string = '';
   clave:string = '';
   correo:string = '';
   isSignedIn = false;
 
-  ngOnInit(){
+  ngOnInit(): void {
     this._document.body.classList.add('bodybg-color');
     if(localStorage.getItem('user')!=null)
     this.isSignedIn = true
     else
     this.isSignedIn = false
   }
-
   ngOnDestroy() {
     this._document.body.classList.remove('bodybg-color');
   }
 
-  async onSignIn()
+  Cancelar()
   {
-    await this.firebaseService.signin(this.correo,this.clave);
-    if(this.firebaseService.isLoggedIn)
-      this.isSignedIn = true
-    this.route.navigate(['/home']);
+    this.route.navigate(['/login']);
   }
 
   Registrar()
   {
-    this.route.navigate(['./registro']);
+    console.log(this.correo,this.clave);
   }
   
-  handleLogout(){
-    this.isSignedIn = false
+  async onSignUp()
+  {
+    await this.firebaseService.signup(this.correo,this.clave);
+    if(this.firebaseService.isLoggedIn)
+    {
+      this.isSignedIn = true
+      this.route.navigate(['/home']);
+    }
   }
 }
+
