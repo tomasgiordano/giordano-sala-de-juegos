@@ -1,0 +1,33 @@
+#contenedor{
+    background: #3f51b5;
+    border-radius: 12px;
+    display: block;
+    width: 800px;
+    height: 500px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+h1{
+    color:white;
+    margin-top: 50px;
+    margin-bottom: 30px;
+    font-family: 'Fredoka One', cursive;
+    font-size: 40px;
+}
+p{
+    color:white;
+    margin-right: 60px;
+    margin-left: 50px;
+    font-family: 'Fredoka One', cursive;
+    font-size: 20px;
+}
+
+img{
+    width: 311px;
+    height: 333px;
+    float:right;
+    margin-right: 50px;
+}
