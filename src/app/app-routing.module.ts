@@ -7,6 +7,7 @@ import { MainComponent } from './components/main/main.component';
 import { QuienSoyComponent } from './components/quien-soy/quien-soy.component';
 import { RegistroComponent } from './components/registro/registro.component';
 import { Router } from '@angular/router'
+import { SalaChatComponent } from './components/sala-chat/sala-chat.component';
 
 const routes: Routes = [
   {
@@ -31,14 +32,14 @@ const routes: Routes = [
         path: "quien-soy"
       },
       {
+        component: SalaChatComponent,
+        path: "chat"
+      },
+      {
         component: MainComponent,
         path:"",
       }
     ]
-  },
-  {
-    component: QuienSoyComponent,
-    path: "quien-soy"
   },
   {
     component: ErrorComponent,

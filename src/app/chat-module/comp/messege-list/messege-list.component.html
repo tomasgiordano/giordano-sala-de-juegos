@@ -1,0 +1,6 @@
+<div #scrollMe class="divChatConteiner">
+    <div *ngFor="let item of listMsg">
+        <app-msg [msg]="item" [text]="item.text" [from]="item.from"></app-msg>
+    </div>
+    <div id="bottom"></div>
+</div>

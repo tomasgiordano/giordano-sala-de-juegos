@@ -1,6 +1,7 @@
 import { Component, OnInit, Output } from '@angular/core';
 import { FirebaseService } from 'src/app/services/firebase.service';
 import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -11,6 +12,8 @@ export class HomeComponent implements OnInit {
   constructor(public firebaseService: FirebaseService,private route:Router) { }
 
   email = ''
+  opened: boolean;
+  
 
   ngOnInit(): void {
     this.email = localStorage.getItem('user');
@@ -24,5 +27,9 @@ export class HomeComponent implements OnInit {
   {
     this.firebaseService.logout();
     this.route.navigate(['/login']);
+  }
+
+  SideNavBtnAccion(){
+    this.opened = false;
   }
 }

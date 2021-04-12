@@ -1,13 +1,29 @@
 <mat-toolbar color="primary">
     <mat-toolbar-row>
-    <a mat-button [routerLink]="'./'"><h1>Sala de juegos</h1></a>
+      <button mat-icon-button>
+        <mat-icon (click)="sidenav.toggle()">menu</mat-icon>
+      </button>
       <span class="menu-spacer"></span>
       <div>
-        <a mat-button [routerLink]="'./quien-soy'"> Quien Soy </a>
-      </div>
-      <div id='cerrarSesion'>
-        <a mat-button (click)='logout()'> Cerrar Sesion </a>
-      </div>
+          <a mat-button [routerLink]="'./'"><h1>Sala de juegos</h1></a>
+          <a mat-button [routerLink]="'./quien-soy'"> Quien Soy </a>
+          <a mat-button [routerLink]="'./chat'"> Chat </a>
+          <a mat-button (click)='logout()' style="position: absolute; right: 0;"> Cerrar Sesion <img src="../../../assets/outline_logout_white_24dp.png"> </a>
+    </div>
     </mat-toolbar-row>
   </mat-toolbar>
-<router-outlet></router-outlet>
+  <mat-sidenav-container>
+    <mat-sidenav #sidenav>
+      <mat-nav-list>
+        <a style="margin-left: 55px; ">Juegos 🎮</a>
+        <hr>
+        <a mat-list-item [routerLink]=""> Ta-Te-Ti </a>
+        <a mat-list-item [routerLink]=""> Piedra, Papel o Tijera </a>
+        <a mat-list-item (click)='logout()' style="position: absolute; bottom: 0; left: 0;" mat-list-item>Cerrar Sesion<img style="margin-left: 10px;" src="../../../assets/outline_logout_black_24dp.png"></a>
+      </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <div style="height: 92.7vh;"></div>
+        <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>

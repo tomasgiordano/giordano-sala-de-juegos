@@ -16,5 +16,4 @@ export class MainComponent implements OnInit {
   ngOnInit(): void {
     this.email = localStorage.getItem('user');
   }
-
 }

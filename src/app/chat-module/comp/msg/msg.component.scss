@@ -1,0 +1,31 @@
+.divMsgConteiner
+{
+    word-wrap: break-word;
+    height: auto;
+    width: 300px;
+    border-radius: 10px;
+}
+
+.emisor {
+    display: grid;
+    grid-template-columns: 600px 300px;
+    grid-gap: 5px;
+    padding-bottom: 10px;
+}
+
+.receptores {
+    display: grid;
+    grid-template-columns: 100px 600px;
+    grid-gap: 5px;
+    padding-bottom: 10px;
+}
+
+.mat-cardEmisor{
+
+    background-color: #3f51b5;
+    color: white;
+    font-weight: 100;
+}
+.mat-cardReceptor{
+    background-color: white;
+}

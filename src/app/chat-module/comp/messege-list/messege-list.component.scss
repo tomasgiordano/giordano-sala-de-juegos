@@ -1,0 +1,21 @@
+.divChatConteiner {
+    height: 600px;
+    width: 1000px;
+    border: 2px solid white;
+    background-image: url("../../../../assets/background.png");
+    overflow-y: scroll;
+}
+
+.emisor {
+    display: grid;
+    grid-template-columns: 600px 300px;
+    grid-gap: 5px;
+    padding-bottom: 10px;
+}
+
+.receptores {
+    display: grid;
+    grid-template-columns: 100px 600px;
+    grid-gap: 5px;
+    padding-bottom: 10px;
+}

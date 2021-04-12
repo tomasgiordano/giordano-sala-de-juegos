@@ -1,0 +1,10 @@
+<div [class]="user == msg.from?'emisor':'receptores'">
+    <h1></h1>
+    <div class="divMsgConteiner">
+        <mat-card [class]="user == msg.from?'mat-cardEmisor':'mat-cardReceptor'">
+            <span><h5>{{ msg.from}}</h5></span>
+            <h1>{{msg.text}}</h1>
+            <span><h5>{{this.datePipe.transform(msg.timeSend,'MM-dd-yyyy hh:mm:ss') }}</h5></span>
+        </mat-card>
+    </div>
+</div>

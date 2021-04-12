@@ -17,6 +17,7 @@ export class FirebaseService {
     .then(res=>{
       this.isLoggedIn = true;
       localStorage.setItem('user',email);
+      localStorage.setItem('uid',res.user.uid);
     });
   }
   async signup(email: string, password:string)
@@ -27,6 +28,7 @@ export class FirebaseService {
       localStorage.setItem('user',email)
     });
   }
+
   logout(){
     this.firebaseAuth.signOut();
     localStorage.removeItem('user');
