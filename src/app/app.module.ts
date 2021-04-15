@@ -53,6 +53,12 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ChatModuleModule } from './chat-module/chat-module.module';
 import { SalaChatComponent } from './components/sala-chat/sala-chat.component';
+import { PiePapTijComponent } from './juegos/pie-pap-tij/pie-pap-tij.component';
+import { StartPPTComponent } from './juegos/pie-pap-tij/start-ppt/start-ppt.component';
+import { ManosComponent } from './juegos/pie-pap-tij/manos/manos.component';
+import { TatetiComponent } from './juegos/tateti/tateti.component';
+import { CuadradoTatetiComponent } from './juegos/tateti/cuadrado-tateti/cuadrado-tateti.component';
+import { StartTatetiComponent } from './juegos/tateti/start-tateti/start-tateti.component';
 
 
 @NgModule({
@@ -64,7 +70,13 @@ import { SalaChatComponent } from './components/sala-chat/sala-chat.component';
     ErrorComponent,
     MainComponent,
     RegistroComponent,
-    SalaChatComponent
+    SalaChatComponent,
+    PiePapTijComponent,
+    StartPPTComponent,
+    ManosComponent,
+    TatetiComponent,
+    CuadradoTatetiComponent,
+    StartTatetiComponent
   ],
   imports: [
     BrowserModule,
