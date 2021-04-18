@@ -1,0 +1,59 @@
+
+main {
+  display: grid;
+  grid-template-columns: 150px 150px 150px 150px;
+  grid-gap: 2px;
+}
+
+app-cuadrado-memotest {
+  height: 150px;
+}
+
+.divMemotest{
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  margin-left: -256px;
+  margin-top: -256px;
+  @media (max-height: 900px) {
+    zoom: 0.87;
+  }
+  @media (max-height: 800px) {
+    zoom: 0.78;
+  }
+  @media (max-height: 768px) {
+    zoom: 0.73;
+  }
+  @media (max-height: 720px) {
+    zoom: 0.68;
+  }
+}
+.divGridMenu{
+  display: grid;
+  grid-template-columns: 300px 100px ;
+  grid-gap: 20px;
+
+}
+.buttonMenu{
+  margin-top: 20px;
+  height: 50px;
+  width: 100px;
+}
+
+.animationFadeOut{
+  animation:fadeOut 1s linear;
+}
+
+@keyframes fadeOut{
+  0%{opacity: 100%;};
+  100%{opacity: 0%};
+}
+
+.animationFadeIn{
+  animation:fadeIn 1s linear;
+}
+
+@keyframes fadeIn{
+  0%{opacity: 0%;};
+  100%{opacity: 100%};
+}

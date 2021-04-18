@@ -41,6 +41,16 @@ export class LoginComponent implements OnInit {
   {
     this.route.navigate(['./registro']);
   }
+
+  async onSignInAnonimous()
+  {
+    this.correo='anonimous@anonimous.com';
+    this.clave='123456';
+    await this.firebaseService.signin(this.correo,this.clave);
+    if(this.firebaseService.isLoggedIn)
+      this.isSignedIn = true
+    this.route.navigate(['/home']);
+  }
   
   handleLogout(){
     this.isSignedIn = false

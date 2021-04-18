@@ -33,4 +33,14 @@ export class FirebaseService {
     this.firebaseAuth.signOut();
     localStorage.removeItem('user');
   }
+
+  async signinAnonimous()
+  {
+    await this.firebaseAuth.signInWithEmailAndPassword("anonimous@anonimous.com","123456")
+    .then(res=>{
+      this.isLoggedIn = true;
+      localStorage.setItem('user',"anonimous");
+      localStorage.setItem('uid',"0");
+    });
+  }
 }

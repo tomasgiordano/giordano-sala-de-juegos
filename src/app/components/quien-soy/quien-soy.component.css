@@ -6,7 +6,19 @@
     height: 500px;
     position: fixed;
     top: 50%;
-    left: 50%;
+    left: 35%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+#contenedor2{
+    background: #3f51b5;
+    border-radius: 12px;
+    display: block;
+    width: 500px;
+    height: 600px;
+    position: fixed;
+    top: 50%;
+    left: 75%;
     transform: translate(-50%, -50%);
     text-align: center;
 }
@@ -25,10 +37,16 @@ p{
     font-size: 20px;
 }
 
-img{
+#miFoto{
     width: 311px;
     height: 333px;
     float:right;
     margin-right: 50px;
     margin-left: 10px;
+}
+
+#tetris{
+    width: 200px;
+    height: 150px;
+    float:center;
 }

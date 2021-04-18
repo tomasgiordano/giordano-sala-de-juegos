@@ -7,7 +7,7 @@
       <div>
           <a mat-button [routerLink]="'./'"><h1>Sala de juegos</h1></a>
           <a mat-button [routerLink]="'./quien-soy'"> Quien Soy </a>
-          <a mat-button [routerLink]="'./chat'"> Chat </a>
+          <a *ngIf="this.show" mat-button  [routerLink]="'./chat'"> Chat </a>
           <a mat-button (click)='logout()' style="position: absolute; right: 0;"> Cerrar Sesion <img src="../../../assets/outline_logout_white_24dp.png"> </a>
     </div>
     </mat-toolbar-row>
@@ -19,6 +19,7 @@
         <hr>
         <a mat-list-item [routerLink]="'./TaTeTi/startTTT'" routerLinkActive="active"> Ta-Te-Ti </a>
         <a mat-list-item [routerLink]="'pierdraPapelTijera/startPPT'" routerLinkActive="active"> Piedra, Papel o Tijera </a>
+        <a mat-list-item [routerLink]="'memotest/startMemotest'" routerLinkActive="active"> Memotest </a>
         <a mat-list-item (click)='logout()' style="position: absolute; bottom: 0; left: 0;" mat-list-item>Cerrar Sesion<img style="margin-left: 10px;" src="../../../assets/outline_logout_black_24dp.png"></a>
       </mat-nav-list>
     </mat-sidenav>

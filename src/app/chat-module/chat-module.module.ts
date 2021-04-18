@@ -40,6 +40,8 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatTreeModule} from '@angular/material/tree';
 import { FormsModule } from '@angular/forms';
+import { ChatModuleRoutingModule } from './chat-module-routing.module';
+import { SalaChatComponent } from './sala-chat/sala-chat.component';
 
 
 @NgModule({
@@ -47,7 +49,8 @@ import { FormsModule } from '@angular/forms';
     ChatComponent,
     MessegeListComponent,
     MessegeSendComponent,
-    MsgComponent
+    MsgComponent,
+    SalaChatComponent
   ],
   imports: [
     CommonModule,
@@ -88,6 +91,7 @@ import { FormsModule } from '@angular/forms';
     MatToolbarModule,
     MatTooltipModule,
     MatTreeModule,
+    ChatModuleRoutingModule,
   ],
   providers:[
     FireChatService
@@ -97,7 +101,7 @@ import { FormsModule } from '@angular/forms';
     MessegeSendComponent,
     MsgComponent,
     ChatComponent,
-    MatChipsModule,
+    MatChipsModule
   ]
 })
 export class ChatModuleModule { }

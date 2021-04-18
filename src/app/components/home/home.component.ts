@@ -13,7 +13,7 @@ export class HomeComponent implements OnInit {
 
   email = ''
   opened: boolean;
-  
+  show:boolean = localStorage.getItem('user')!="anonimous@anonimous.com";
 
   ngOnInit(): void {
     this.email = localStorage.getItem('user');

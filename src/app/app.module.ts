@@ -52,15 +52,17 @@ import { DatePipe } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ChatModuleModule } from './chat-module/chat-module.module';
-import { SalaChatComponent } from './components/sala-chat/sala-chat.component';
 import { PiePapTijComponent } from './juegos/pie-pap-tij/pie-pap-tij.component';
 import { StartPPTComponent } from './juegos/pie-pap-tij/start-ppt/start-ppt.component';
 import { ManosComponent } from './juegos/pie-pap-tij/manos/manos.component';
 import { TatetiComponent } from './juegos/tateti/tateti.component';
 import { CuadradoTatetiComponent } from './juegos/tateti/cuadrado-tateti/cuadrado-tateti.component';
 import { StartTatetiComponent } from './juegos/tateti/start-tateti/start-tateti.component';
-
-
+import { MemotestComponent } from './juegos/memotest/memotest.component';
+import { CuadradoMemotestComponent } from './juegos/memotest/cuadrado-memotest/cuadrado-memotest.component';
+import { StartMemotestComponent } from './juegos/memotest/start-memotest/start-memotest.component';
+import { ScoreService } from './services/score.service';
+import { LoginService } from './services/loginService/login.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -70,13 +72,15 @@ import { StartTatetiComponent } from './juegos/tateti/start-tateti/start-tateti.
     ErrorComponent,
     MainComponent,
     RegistroComponent,
-    SalaChatComponent,
     PiePapTijComponent,
     StartPPTComponent,
     ManosComponent,
     TatetiComponent,
     CuadradoTatetiComponent,
-    StartTatetiComponent
+    StartTatetiComponent,
+    MemotestComponent,
+    CuadradoMemotestComponent,
+    StartMemotestComponent
   ],
   imports: [
     BrowserModule,
@@ -128,6 +132,7 @@ import { StartTatetiComponent } from './juegos/tateti/start-tateti/start-tateti.
     MatButtonModule,
     MatIconModule,
     ChatModuleModule,
+    HttpClientModule,
     AngularFireModule.initializeApp({
       apiKey: "AIzaSyBk22tmWg4lhT4R9ZrA9a6qiJ1Cuy_cBzI",
       authDomain: "flatz-973e4.firebaseapp.com",
@@ -139,7 +144,7 @@ import { StartTatetiComponent } from './juegos/tateti/start-tateti/start-tateti.
       measurementId: "G-JM6N70YSQZ"
     })
   ],
-  providers: [FirebaseService,AngularFireDatabase, DatePipe],
+  providers: [FirebaseService,AngularFireDatabase, DatePipe,ScoreService,LoginService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
