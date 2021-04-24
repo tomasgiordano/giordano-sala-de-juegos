@@ -1,5 +1,6 @@
 import { FireChatService } from '../../service/fire-chat.service';
 import { Component, OnInit } from '@angular/core';
+import { LoginService } from 'src/app/services/loginService/login.service';
 
 @Component({
   selector: 'app-messege-send',
@@ -10,14 +11,16 @@ export class MessegeSendComponent implements OnInit {
 
   msg : string = '';
 
-  constructor(private fc : FireChatService) { }
+  constructor(private fc : FireChatService, private loginService : LoginService) { }
 
   ngOnInit(): void {
   }
 
   send(){
     if(this.msg != ''){
-      const user = localStorage.getItem('user');
+      
+      let user = this.loginService.GetSesionActual()
+      user = (JSON.parse(user))?.correo;
 
       this.fc.sengMsg("user",this.msg,user);
       this.msg = '';

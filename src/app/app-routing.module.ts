@@ -11,6 +11,9 @@ import { StartTatetiComponent } from './juegos/tateti/start-tateti/start-tateti.
 import { StartPPTComponent } from './juegos/pie-pap-tij/start-ppt/start-ppt.component';
 import { MemotestComponent } from './juegos/memotest/memotest.component';
 import { StartMemotestComponent } from './juegos/memotest/start-memotest/start-memotest.component';
+import { TetrisComponent } from './juegos/tetris/tetris.component';
+import { CanvasTetrisComponent } from './juegos/tetris/canvas-tetris/canvas-tetris.component';
+import { ScoresComponent } from './juegos/scores/scores.component';
 
 const routes: Routes = [
   {
@@ -55,6 +58,13 @@ const routes: Routes = [
         { path: 'startMemotest', component:StartMemotestComponent , pathMatch:'full'},
       ]
     },
+    {
+      path: 'tetris', component: TetrisComponent,
+      children: [
+        { path: 'startTetris', component: CanvasTetrisComponent, pathMatch:'full'},
+      ]
+    },
+    { path: 'scores', component: ScoresComponent, pathMatch:'full'},
       {
         component: MainComponent,
         path:"",

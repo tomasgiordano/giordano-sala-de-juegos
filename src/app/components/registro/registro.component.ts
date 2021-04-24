@@ -1,52 +1,64 @@
-import { Component, Inject, OnInit, ViewEncapsulation } from '@angular/core';
-import { DOCUMENT } from '@angular/common';
 import { Router } from '@angular/router';
-import { FormsModule } from '@angular/forms'
-import { FirebaseService } from 'src/app/services/firebase.service';
+import { Component, Inject, OnInit } from '@angular/core';
+import { Usuario } from 'src/app/clases/usuario';
+import { LoginService } from 'src/app/services/loginService/login.service';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { DOCUMENT } from '@angular/common';
 
 @Component({
-  selector: 'app-registro',
+  selector: 'app-register',
   templateUrl: './registro.component.html',
-  styleUrls: ['./registro.component.css'],
-  encapsulation: ViewEncapsulation.None
+  styleUrls: ['./registro.component.css']
 })
 export class RegistroComponent implements OnInit {
+  error : string = '';
+  myForm : FormGroup;
 
-  constructor(@Inject(DOCUMENT) private _document, private route:Router,public firebaseService:FirebaseService) { }
-  error:string = '';
-  clave:string = '';
-  correo:string = '';
-  isSignedIn = false;
-
+  constructor(
+    private loginService : LoginService,
+    private router: Router,
+    private fb : FormBuilder,
+    @Inject(DOCUMENT) private _document
+    ) {
+    }
   ngOnInit(): void {
     this._document.body.classList.add('bodybg-color');
-    if(localStorage.getItem('user')!=null)
-    this.isSignedIn = true
-    else
-    this.isSignedIn = false
+    this.myForm = this.fb.group({
+      correo : ['',[
+        Validators.required,
+        Validators.email,
+      ]],
+      clave : ['',[
+        Validators.required,
+        Validators.minLength(6)
+      ]]
+    })
   }
+
   ngOnDestroy() {
     this._document.body.classList.remove('bodybg-color');
   }
 
-  Cancelar()
-  {
-    this.route.navigate(['/login']);
+  Cerrar(){
+      this.router.navigate(['']);
   }
 
-  Registrar()
-  {
-    console.log(this.correo,this.clave);
-  }
-  
-  async onSignUp()
-  {
-    await this.firebaseService.signup(this.correo,this.clave);
-    if(this.firebaseService.isLoggedIn)
-    {
-      this.isSignedIn = true
-      this.route.navigate(['/home']);
+  btn_registrar(){
+    this.error = '';
+
+    if(this.myForm.valid){
+      let correo = this.myForm.get('correo').value;
+      let clave = this.myForm.get('clave').value;
+      this.loginService.AgregarUsuario(correo,clave)
+        .then(()=>{
+          let user = new Usuario(correo,clave);
+          this.loginService.guardarUsuario(user);
+          console.log("OK!!!");
+          this.Cerrar();
+        }).catch(()=>{
+          console.log("ERROR");
+          this.error = 'Ya existe usuario';
+        });
     }
   }
 }
-

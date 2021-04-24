@@ -1,33 +1,40 @@
-<div id="sect1"class="container">
-  <div id="contentInput">
-    <h1 style="margin: 10px; margin-top: 30px;">Login</h1>
+
+  <div id="sect1"class="container">
+    <div id="contentInput">
+      <h1 style="margin: 10px; margin-top: 30px;">Login</h1>
+    <form [formGroup]="formLogin">
       <mat-form-field class="inputLogin">
         <mat-label>Correo</mat-label>
-        <input [(ngModel)]="correo" matInput id="correo">
-        <mat-error>Falta correo</mat-error>
+        <input matInput id="correo" formControlName="correo">
+        <mat-error *ngIf="formLogin.get('correo').touched && formLogin.get('correo').invalid">Falta correo</mat-error>
       </mat-form-field>
+
       <mat-form-field class="inputLogin">
         <mat-label>Clave</mat-label>
-        <input [(ngModel)]="clave" matInput type="password" id="clave">
-        <mat-error>Falta clave</mat-error>
+        <input  matInput type="password" formControlName="clave">
+        <mat-error *ngIf="formLogin.get('clave').touched && formLogin.get('clave').invalid">Falta clave</mat-error>
       </mat-form-field>
       <span style="margin-left: 5px;">{{error}}</span>
       <br>
       <br>
+      <table>
         <tr>
           <td>
-            <button id='button' mat-raised-button (click)='onSignIn()'>Ingresar</button>
+            <button id='button' mat-raised-button (click)="Login()">Ingresar</button>
           </td>
         </tr>
-        <tr>
-        <td>
-          <button id='button' mat-raised-button (click)="Registrar()">Registrarme</button>
-        </td>
-      </tr>
+          <tr>
+          <td>
+            <button id='button' mat-raised-button (click)="Register()">Registrar</button>
+          </td>
+        </tr>
+      </table>
       <tr>
         <td>
           <button id='buttonAnonimous' mat-raised-button (click)='onSignInAnonimous()'>Ingresar como anonimo</button>
         </td>
       </tr>
+    </form>
+    </div>
   </div>
-</div>
+

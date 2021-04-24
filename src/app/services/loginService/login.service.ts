@@ -22,7 +22,7 @@ export class LoginService {
       })
     }
 
-  public AgregarUsuario(correo : string, clave : string, sexo : string, perfil : string){
+  public AgregarUsuario(correo : string, clave : string){
     let aux = this.afAuth.createUserWithEmailAndPassword(correo,clave);
 
     return aux;
@@ -57,7 +57,7 @@ export class LoginService {
     let user = this.TraerUno(correo);
     user.clave="SuperSecretPassword";
     let aux = JSON.stringify(user);
-
+    
     localStorage.setItem('user', aux);
   }
   public GetSesionActual(){

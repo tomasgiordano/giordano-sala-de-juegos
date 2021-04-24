@@ -44,7 +44,7 @@ import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatTreeModule} from '@angular/material/tree';
 import { MainComponent } from './components/main/main.component';
 import { RegistroComponent } from './components/registro/registro.component';
-import {FormsModule} from "@angular/forms";
+import {FormGroup, FormsModule} from "@angular/forms";
 import { FirebaseService } from './services/firebase.service';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireDatabase } from '@angular/fire/database';
@@ -63,6 +63,11 @@ import { CuadradoMemotestComponent } from './juegos/memotest/cuadrado-memotest/c
 import { StartMemotestComponent } from './juegos/memotest/start-memotest/start-memotest.component';
 import { ScoreService } from './services/score.service';
 import { LoginService } from './services/loginService/login.service';
+import { CanvasTetrisComponent } from './juegos/tetris/canvas-tetris/canvas-tetris.component';
+import { TetrisComponent } from './juegos/tetris/tetris.component';
+import { ScoresComponent } from './juegos/scores/scores.component';
+import { ListComponent } from './juegos/scores/list/list.component';
+import {ReactiveFormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     AppComponent,
@@ -80,7 +85,11 @@ import { LoginService } from './services/loginService/login.service';
     StartTatetiComponent,
     MemotestComponent,
     CuadradoMemotestComponent,
-    StartMemotestComponent
+    StartMemotestComponent,
+    CanvasTetrisComponent,
+    TetrisComponent,
+    ScoresComponent,
+    ListComponent,
   ],
   imports: [
     BrowserModule,
@@ -116,7 +125,7 @@ import { LoginService } from './services/loginService/login.service';
     MatSlideToggleModule,
     MatSnackBarModule,
     MatSortModule,
-    MatTableModule,
+    MatPaginatorModule,
     MatTabsModule,
     MatToolbarModule,
     MatTooltipModule,
@@ -133,6 +142,8 @@ import { LoginService } from './services/loginService/login.service';
     MatIconModule,
     ChatModuleModule,
     HttpClientModule,
+    MatTableModule,
+    ReactiveFormsModule,
     AngularFireModule.initializeApp({
       apiKey: "AIzaSyBk22tmWg4lhT4R9ZrA9a6qiJ1Cuy_cBzI",
       authDomain: "flatz-973e4.firebaseapp.com",

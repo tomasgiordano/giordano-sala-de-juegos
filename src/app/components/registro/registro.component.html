@@ -1,28 +1,43 @@
 <div id="sect1"class="container">
   <div id="contentInput">
-    <h1 style="margin: 10px; margin-top: 30px;">Registro</h1>
-      <mat-form-field class="inputLogin">
-        <mat-label>Correo</mat-label>
-        <input [(ngModel)]="correo" matInput>
-        <mat-error>Falta correo</mat-error>
-      </mat-form-field>
-      <mat-form-field class="inputLogin">
-        <mat-label>Clave</mat-label>
-        <input [(ngModel)]="clave" matInput type="password">
-        <mat-error>Falta clave</mat-error>
-      </mat-form-field>
-      <span style="margin-left: 5px;">{{error}}</span>
-      <br>
-      <br>
-        <tr>
-          <td>
-            <button id='buttonCancelar' mat-raised-button (click)="Cancelar()">Cancelar</button>
-          </td>
-        </tr>
-        <tr>
+    <table>
+      <tr>
         <td>
-          <button id='buttonRegistrar' mat-raised-button (click)="onSignUp()">Registrar</button>
+          <h1 style="margin-left: 100px; margin-top: 30px;">Register</h1>
         </td>
       </tr>
-  </div>
+    </table>
+
+    <form [formGroup]="myForm">
+      <tr>
+        <td>
+      <mat-form-field class="inputLogin">
+        <mat-label>Correo</mat-label>
+        <input matInput formControlName="correo">
+        <mat-error *ngIf="myForm.get('correo').touched && myForm.get('correo').invalid">Correo invalido</mat-error>
+      </mat-form-field>
+      </td>
+      </tr>
+      <tr>
+        <td>
+      <mat-form-field class="inputLogin">
+        <mat-label>Clave</mat-label>
+        <input matInput type="password" formControlName="clave">
+        <mat-error *ngIf="myForm.get('clave').touched && myForm.get('clave').invalid">Clave invalida</mat-error>
+      </mat-form-field>
+      </td>
+      </tr>
+      <tr>
+        <td>
+      <button mat-raised-button id='buttonRegistrar' (click)="btn_registrar()">Registrar</button>
+      </td>
+      </tr>
+      <tr>
+        <td>
+          <button id='buttonCancelar' mat-raised-button (click)="Cerrar()">Cancelar</button>
+        </td>
+      </tr>
+      <span>{{error}}</span>
+    </form>
+</div>
 </div>

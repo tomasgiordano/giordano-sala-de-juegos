@@ -1,8 +1,9 @@
 import { Component, Inject, OnInit, ViewEncapsulation } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 import { Router } from '@angular/router';
-import { FormsModule } from '@angular/forms'
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms'
 import { FirebaseService } from 'src/app/services/firebase.service';
+import { LoginService } from 'src/app/services/loginService/login.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -11,48 +12,66 @@ import { FirebaseService } from 'src/app/services/firebase.service';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(@Inject(DOCUMENT) private _document, private route:Router, public firebaseService:FirebaseService) { }
-  error:string = '';
-  clave:string = '';
-  correo:string = '';
-  isSignedIn = false;
+  error : string = "";
+  correo :string = '';
+  clave : string = '';
+  flag : boolean = false;
 
-  ngOnInit(){
+  formLogin : FormGroup;
+
+  constructor(
+    @Inject(DOCUMENT) private _document,
+    public loginService : LoginService,
+    public router : Router,
+    private fb : FormBuilder) { }
+  ngOnInit(): void {
     this._document.body.classList.add('bodybg-color');
-    if(localStorage.getItem('user')!=null)
-    this.isSignedIn = true
-    else
-    this.isSignedIn = false
+    this.formLogin = this.fb.group({
+      correo : ['',[
+        Validators.required,
+      ]],
+      clave : ['',[
+        Validators.required,
+      ]]
+    })
   }
 
   ngOnDestroy() {
     this._document.body.classList.remove('bodybg-color');
   }
 
-  async onSignIn()
+  async Login()
   {
-    await this.firebaseService.signin(this.correo,this.clave);
-    if(this.firebaseService.isLoggedIn)
-      this.isSignedIn = true
-    this.route.navigate(['/home']);
+    this.error =' ';
+    if(this.formLogin.valid){
+      let correo = this.formLogin.get('correo').value;
+      let clave = this.formLogin.get('clave').value;
+      this.loginService.SignIn(correo,clave)
+      .then(()=>{
+        this.loginService.SetSesionActual(correo);
+        this.router.navigate(['/home']);
+      }).catch(aux=>{
+        this.error ='No existe usuario';
+      })
+    }
   }
 
-  Registrar()
+  Register()
   {
-    this.route.navigate(['./registro']);
+    this.router.navigate(['./registro']);
   }
 
   async onSignInAnonimous()
   {
     this.correo='anonimous@anonimous.com';
     this.clave='123456';
-    await this.firebaseService.signin(this.correo,this.clave);
-    if(this.firebaseService.isLoggedIn)
-      this.isSignedIn = true
-    this.route.navigate(['/home']);
+    // await this.firebaseService.signin(this.correo,this.clave);
+    // if(this.firebaseService.isLoggedIn)
+    //   this.isSignedIn = true
+    this.router.navigate(['/home']);
   }
   
-  handleLogout(){
-    this.isSignedIn = false
-  }
+  // handleLogout(){
+  //   this.isSignedIn = false
+  // }
 }

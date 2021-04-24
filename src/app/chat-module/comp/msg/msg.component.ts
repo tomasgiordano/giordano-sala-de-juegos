@@ -1,5 +1,6 @@
 import { DatePipe } from '@angular/common';
 import { Component, Input, OnInit } from '@angular/core';
+import { LoginService } from 'src/app/services/loginService/login.service';
 
 @Component({
   selector: 'app-msg',
@@ -13,10 +14,11 @@ export class MsgComponent implements OnInit {
   @Input() msg: any;
 
   user: string = '';
-  constructor(public datePipe : DatePipe) { }
+  constructor(public datePipe : DatePipe,public LoginService:LoginService) { }
 
   ngOnInit(): void {
-    this.user = localStorage.getItem('user');
+    this.user = this.LoginService.GetSesionActual()
+    this.user = (JSON.parse(this.user))?.correo;
   }
 
 }
