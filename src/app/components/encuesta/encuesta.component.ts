@@ -1,6 +1,8 @@
 import { validateAndRewriteCoreSymbol } from '@angular/compiler-cli/src/ngtsc/imports';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FirebaseService } from 'src/app/services/firebase.service';
+import { LoginService } from 'src/app/services/loginService/login.service';
 import { StoreService } from 'src/app/services/store.service';
 
 @Component({
@@ -11,10 +13,14 @@ import { StoreService } from 'src/app/services/store.service';
 export class EncuestaComponent implements OnInit {
 
   public forma : FormGroup;
-
-  constructor(private fb:FormBuilder,private storage:StoreService) { }
+  public email : string;
+  constructor(private fb:FormBuilder,private storage:StoreService,private loginService:LoginService) { }
 
   ngOnInit(): void {
+    let user = this.loginService.GetSesionActual()
+    user = (JSON.parse(user))?.correo;
+    this.email = user;
+
     this.forma = this.fb.group({
       'nombre':['',Validators.required],
       'apellido':['',Validators.required],
@@ -22,8 +28,11 @@ export class EncuestaComponent implements OnInit {
       'telefono':['',[Validators.required,Validators.max(9999999999)]],
       'pregunta1':['',Validators.required],
       'pregunta2':['',Validators.required],
-      'pregunta3':['',Validators.required]
+      'pregunta3':['',Validators.required],
+      'email':[this.email]
     });
+
+
   }
 
   public aceptar() : void
