@@ -63,15 +63,16 @@ export class LoginComponent implements OnInit {
 
   async onSignInAnonimous()
   {
-    this.correo='anonimous@anonimous.com';
-    this.clave='123456';
-    // await this.firebaseService.signin(this.correo,this.clave);
-    // if(this.firebaseService.isLoggedIn)
-    //   this.isSignedIn = true
-    this.router.navigate(['/home']);
+    this.error =' ';
+      let correo = "anonimus@anonimus.com";
+      let clave = "123456";
+      this.loginService.SignIn(correo,clave)
+      .then(()=>{
+        this.loginService.SetSesionActual(correo);
+        this.router.navigate(['/home']);
+      }).catch(aux=>{
+        this.error ='No existe usuario';
+      })
+    
   }
-  
-  // handleLogout(){
-  //   this.isSignedIn = false
-  // }
 }

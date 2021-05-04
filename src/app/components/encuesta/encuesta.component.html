@@ -1,0 +1,74 @@
+<div class="container" style="margin-top: 3em;">
+    <form [formGroup]='forma' (ngSubmit)="aceptar()">
+      <div class="row">
+        <div class="col-md-12 mb-5">
+          <h2>ENCUESTA</h2>
+        </div>
+      </div>
+      <div class="row formulario">
+        <div class="col-md-6 mb-3">
+          <label for="nombre" class="form-label">Nombre</label>
+          <input type="text" class="form-control" id="nombre" placeholder="Ingrese nombre" formControlName="nombre">
+          <small class="invalid" *ngIf="forma.get('nombre').invalid && forma.get('nombre').touched">El nombre es requerido</small>
+        </div>
+        <div class="col-md-6 mb-3">
+          <label for="apellido" class="form-label">Apellido</label>
+          <input type="text" class="form-control" id="apellido" placeholder="Ingrese apellido" formControlName="apellido">
+          <small class="invalid" *ngIf="forma.get('apellido').invalid && forma.get('apellido').touched">El apellido es requerido</small>
+        </div>
+        <div class="col-md-6 mb-3">
+          <label for="dni" class="form-label">Edad</label>
+          <input type="number" class="form-control" id="edad" placeholder="Ingrese edad" formControlName="edad">
+          <small class="invalid" *ngIf="forma.get('edad').invalid && forma.get('edad').touched">La edad es requerida</small>
+        </div>
+        <div class="col-md-6 mb-3">
+          <label for="sexo" class="form-label">Telefono</label>
+          <input type="number" class="form-control" id="email" placeholder="Ingrese telefono" formControlName="telefono">
+          <small class="invalid" *ngIf="forma.get('telefono').invalid && forma.get('telefono').touched">El telefono es requerido</small>
+        </div>
+      </div>
+      <div class="col-md-12 mb-5">
+        <h2>PREGUNTAS</h2>
+      </div>
+      <div class="row formulario">
+        <div class="col-md-6 mb-3">
+          <label for="nombre" class="form-label">Juego favorito</label>
+          <br>
+          <select class="form-select" id="pregunta1" formControlName="pregunta1">
+            <option value="">Seleccione uno</option>
+            <option value="tateti">Ta-Te-Ti</option>
+            <option value="piepaptij">Piedra-Papel-Tijeras</option>
+            <option value="memotest">Memotest</option>
+            <option value="tetris">Tetris</option>
+          </select>
+          <br>
+          <small class="invalid" *ngIf="forma.get('pregunta1').invalid && forma.get('pregunta1').touched">El respuesta es requerida</small>
+        </div>
+        <div class="col-md-6 mb-3">
+          <label for="nombre" class="form-label">Recomendarias esta pagina?</label>
+          <br>
+          <div>
+            <input id="si" type="radio" value="si" name="pregunta2" formControlName="pregunta2">
+            <label for="si">Si</label>
+         </div>
+         <div>
+            <input id="no" type="radio" value="no" name="pregunta2" formControlName="pregunta2">
+            <label for="no">No</label>
+         </div>
+          <small class="invalid" *ngIf="forma.get('pregunta2').invalid && forma.get('pregunta2').touched">La respuesta es requerida</small>
+        </div>
+      </div>
+      <div class="col-md-12 mb-5">
+        <label for="pregunta3" class="form-label">Comentarios</label>
+        <input type="text" class="form-control" id="pregunta3" placeholder="Ingrese comentario" formControlName="pregunta3">
+        <small class="invalid" *ngIf="forma.get('pregunta3').invalid && forma.get('pregunta3').touched">La respuesta es requerida</small>
+      </div>
+      <div class="row">
+        <div class="col-md-12 d-grid gap-2">
+          <button type="submit" class="btn btn-primary btn-block">
+            Aceptar
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>

@@ -1,6 +1,7 @@
 import { Component, OnInit, Output } from '@angular/core';
 import { FirebaseService } from 'src/app/services/firebase.service';
 import { Router } from '@angular/router';
+import { LoginService } from 'src/app/services/loginService/login.service';
 
 @Component({
   selector: 'app-home',
@@ -9,13 +10,14 @@ import { Router } from '@angular/router';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(public firebaseService: FirebaseService,private route:Router) { }
+  constructor(public firebaseService: FirebaseService,private route:Router,public loginService:LoginService) { }
 
   email = ''
   opened: boolean;
-  show:boolean = localStorage.getItem('user')!="anonimous@anonimous.com";
+  show:boolean = (JSON.parse(this.loginService.GetSesionActual()))?.correo!="anonimus@anonimus.com";
 
   ngOnInit(): void {
+    console.log(this.show);
     this.email = localStorage.getItem('user');
     if(this.email==null)
     {

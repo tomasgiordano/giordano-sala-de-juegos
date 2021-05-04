@@ -68,6 +68,7 @@ import { TetrisComponent } from './juegos/tetris/tetris.component';
 import { ScoresComponent } from './juegos/scores/scores.component';
 import { ListComponent } from './juegos/scores/list/list.component';
 import {ReactiveFormsModule } from '@angular/forms';
+import { EncuestaComponent } from './components/encuesta/encuesta.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -90,6 +91,7 @@ import {ReactiveFormsModule } from '@angular/forms';
     TetrisComponent,
     ScoresComponent,
     ListComponent,
+    EncuestaComponent,
   ],
   imports: [
     BrowserModule,

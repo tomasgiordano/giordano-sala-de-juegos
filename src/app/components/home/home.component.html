@@ -9,6 +9,7 @@
           <a mat-button [routerLink]="'./quien-soy'"> Quien Soy </a>
           <a *ngIf="this.show" mat-button  [routerLink]="'./chat'"> Chat </a>
           <a mat-button [routerLink]="'./scores'"> Scores </a>
+          <a *ngIf="this.show" mat-button [routerLink]="'./encuesta'">Encuesta</a>
           <a mat-button (click)='logout()' style="position: absolute; right: 0;"> Cerrar Sesion <img src="../../../assets/outline_logout_white_24dp.png"> </a>
     </div>
     </mat-toolbar-row>
